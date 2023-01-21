@@ -12,7 +12,7 @@ sudo apt-get remove -y docker-ce
 sudo rm -rf /var/lib/docker
 
 # Remove remaining Docker files and directories
-sudo rm /etc/docker
+sudo rm -rf /etc/docker
 
 # Remove the Docker group
 sudo groupdel docker
