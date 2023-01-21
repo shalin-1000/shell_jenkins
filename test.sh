@@ -1,26 +1,35 @@
 #!/bin/bash
 
-echo "Uninstalling Docker"
+echo "Installing Docker"
 
-# Stop the Docker service
-sudo systemctl stop docker
+# Update the package lists
+sudo apt-get update
 
-# Remove the Docker package
-sudo apt-get remove -y docker-ce
+# Install package dependencies
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 
-# Remove Docker images, containers, and volumes
-sudo rm -rf /var/lib/docker
+# Add the Docker repository key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-# Remove remaining Docker files and directories
-sudo rm -rf /etc/docker
+# Verify the fingerprint of the key
+sudo apt-key fingerprint 0EBFCD88
 
-# Remove the Docker group
-sudo groupdel docker
+# Add the Docker repository to the system
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-# Verify the uninstallation
-if [ -x "$(command -v docker)" ]; then
-    echo "Docker is still installed"
-    exit 1
-else
-    echo "Docker uninstalled successfully"
-fi
+# Update the package lists again
+sudo apt-get update
+
+# Install Docker
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+# Start the Docker service
+sudo systemctl start docker
+
+# Enable the Docker service to start on boot
+sudo systemctl enable docker
+
+# Verify the installation
+docker --version
+
+echo "Docker installed successfully"
