@@ -1,32 +1,19 @@
 #!/bin/bash
 
-echo "Starting Jenkins pipeline test"
+echo "Uninstalling Terraform"
 
-# Run unit tests
-./gradlew test
-
-# Check the exit code of the unit tests
-if [ $? -ne 0 ]; then
-  echo "Unit tests failed, exiting pipeline"
-  exit 1
+# Check if Terraform is installed
+if [ -f /usr/local/bin/terraform ]; then
+    echo "Terraform is installed"
+else
+    echo "Terraform is not installed"
+    exit 1
 fi
 
-# Build the application
-./gradlew build
+# Remove the Terraform binary
+sudo rm /usr/local/bin/terraform
 
-# Check the exit code of the build
-if [ $? -ne 0 ]; then
-  echo "Build failed, exiting pipeline"
-  exit 1
-fi
+# Remove Terraform configuration files
+sudo rm -rf ~/.terraform.d
 
-# Deploy the application to a staging environment
-./gradlew deploy -Penv=staging
-
-# Check the exit code of the deployment
-if [ $? -ne 0 ]; then
-  echo "Deployment to staging failed, exiting pipeline"
-  exit 1
-fi
-
-echo "Jenkins pipeline test completed successfully"
+echo "Terraform uninstalled successfully"
