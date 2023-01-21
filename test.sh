@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Creating directory /tmp/test"
+echo "Creating directory /tmp/test_1"
 mkdir -p /tmp/test
 
 echo "Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test"
