@@ -10,4 +10,4 @@ touch test.txt
 mkdir -p /var/lib/jenkins/test_1/ 
 
 echo "Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test"
-cp /var/lib/jenkins/test/test.txt /var/lib/jenkins/test_1/jen.txt
+cp /var/lib/jenkins/test/test.txt /var/lib/jenkins/test_1/jen_webhook.txt
