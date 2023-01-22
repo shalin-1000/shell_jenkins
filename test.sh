@@ -1,26 +1,13 @@
+Creating directory /tmp/test_1
+Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test
+jenkins@ip-10-0-1-104:/tmp$ cat jen.sh 
 #!/bin/bash
 
-echo "Uninstalling Docker"
+echo "Creating directory /tmp/test_1"
+mkdir -p /var/lib/jenkins/test/
+cd /var/lib/jenkins/test
+touch test.txt
+mkdir -p /var/lib/jenkins/test_1/ 
 
-# Stop the Docker service
-sudo systemctl stop docker
-
-# Remove the Docker package
-sudo apt-get remove -y docker-ce
-
-# Remove Docker images, containers, and volumes
-sudo rm -rf /var/lib/docker
-
-# Remove remaining Docker files and directories
-sudo rm /etc/docker
-
-# Remove the Docker group
-sudo groupdel docker
-
-# Verify the uninstallation
-if [ -x "$(command -v docker)" ]; then
-    echo "Docker is still installed"
-    exit 1
-else
-    echo "Docker uninstalled successfully"
-fi
+echo "Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test"
+cp /var/lib/jenkins/test/test.txt /var/lib/jenkins/test_1/jen.txt
