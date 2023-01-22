@@ -7,7 +7,7 @@ echo "Creating directory /tmp/test_1"
 mkdir -p /var/lib/jenkins/test/
 cd /var/lib/jenkins/test
 touch test.txt
-mkdir -p /var/lib/jenkins/test_1/ 
+mkdir -p /var/lib/jenkins/test_2/ 
 
 echo "Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test"
 cp /var/lib/jenkins/test/test.txt /var/lib/jenkins/test_1/jen_webhook.txt
