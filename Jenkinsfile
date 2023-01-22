@@ -7,7 +7,7 @@ pipeline {
                 sh './test.sh'
             }
         }
-        stage('DeployToStaging') {
+        /*stage('DeployToStaging') {
             when {
                 branch 'main'
             }
@@ -34,6 +34,6 @@ pipeline {
                     )
                 }
             }
-        }
+        }*/
     }
 }
