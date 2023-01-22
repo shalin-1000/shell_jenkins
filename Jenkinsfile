@@ -1,7 +1,6 @@
-
 pipeline {
-       agent any
-      stages {
+    agent any
+    stages {
         stage('Build') {
             steps {
                 sh 'chmod +x test.sh'
@@ -22,14 +21,12 @@ pipeline {
                                 configName: 'staging',
                                 sshCredentials: [
                                     username: "$USERNAME",
-                                    encryptedPassphrase: "$USERPASS"
+                                    password: "$USERPASS"
                                 ], 
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: '/var/lib/jenkins/test_1/jen.txt',
-                                        removePrefix: 'dist/lib/jenkins/',
                                         remoteDirectory: '/tmp',
-                                        
                                     )
                                 ]
                             )
@@ -38,3 +35,5 @@ pipeline {
                 }
             }
         }
+    }
+}
