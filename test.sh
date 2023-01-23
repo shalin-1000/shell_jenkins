@@ -7,7 +7,7 @@ cd ~
 touch example.txt
 
 # Copy the file to another location
-cp example.txt /var/tmp/webhook.txt 
+cp example.txt /var/tmp/webhook123.txt 
 
 if [ $? -eq 0 ]; then
   # Remove the source file
