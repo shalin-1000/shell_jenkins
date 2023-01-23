@@ -1,13 +1,18 @@
-Creating directory /tmp/test_1
-Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test
-jenkins@ip-10-0-1-104:/tmp$ cat jen.sh 
 #!/bin/bash
 
-echo "Creating directory /tmp/test_1"
-mkdir -p /tmp/test/
-cd /tmp/test/
-touch test.txt
-mkdir -p /tmp/test/webhook/
+# Switch to the user's home directory
+cd ~
 
-echo "Copying file /var/lib/jenkins/workspace/shell_main/test.sh to /tmp/test"
-cp /tmp/test/* /tmp/test/webhook/webhook.txt
+# Create a file called "example.txt"
+touch example.txt
+
+# Copy the file to another location
+cp example.txt /var/tmp/webhook.txt 
+
+if [ $? -eq 0 ]; then
+  # Remove the source file
+  rm example.txt
+  echo "File successfully copied and the source file removed"
+else
+  echo "Error occurred while copying the file"
+fi
